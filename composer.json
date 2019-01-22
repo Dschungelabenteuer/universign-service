@@ -1,5 +1,5 @@
 {
-    "name": "charlesgruenais/universign-service",
+    "name": "globalis/universign-service",
     "description": "PHP library for universign service (5.3 compatible)",
     "type": "library",
     "homepage": "https://github.com/globalis-ms/universign-service",
