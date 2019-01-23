@@ -36,7 +36,7 @@ abstract class Base
       case 'dateTime.iso8601':
         return  Datetime::createFromFormat('Ymd\TH:i:s', $values->scalarval(), new DateTimeZone('UTC'));
       case 'array':
-        $data = [];
+        $data = array();
         foreach ($values->scalarval() as $val) {
           $data = $this->parseValue($val);
         }
