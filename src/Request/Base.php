@@ -37,7 +37,7 @@ abstract class Base
       case 'base64':
         return new PhpXmlRpcValue($value, PhpXmlRpcValue::$xmlrpcBase64);
       case 'array':
-        $data = [];
+        $data = array();
         foreach ($value as $v) {
           $data[] = $this->buildRpcValue($v);
         }
