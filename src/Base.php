@@ -9,48 +9,47 @@ use RuntimeException;
 
 class Base
 {
-  /**
-   * Xml Rpc Client
-   *
-   * @var \PhpXmlRpc;
-   */
-  protected $client;
+    /**
+     * Xml Rpc Client
+     *
+     * @var \PhpXmlRpc;
+     */
+    protected $client;
 
-  public function __construct($client)
-  {
-    $this->client = $client;
-    $this->client->return_type = 'xmlrpcvals';
-  }
-
-  protected function buildRequest($method, $data)
-  {
-    if (!is_array($data)) {
-      $data = array($data);
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+        $this->client->return_type = 'xmlrpcvals';
     }
 
-    return new Request(
-      $method,
-      $data
-    );
-  }
+    protected function buildRequest($method, $data)
+    {
+        if (!is_array($data)) {
+            $data = [$data];
+        }
 
-  protected function sendRequest($method, $data)
-  {
-    $response = $this->client->send(
-      $this->buildRequest($method, $data)
-    );
-
-    if (!$response->faultCode()) {
-      return $response->value();
+        return new Request(
+            $method,
+            $data
+        );
     }
 
-    throw new RuntimeException(
-      sprintf(
-        'Unsuccessful request: `%s` resulted in a `%s %s` response',
-        $method,
-        $response->faultCode(),
-        $response->faultString()
-      )
-    );
-  }
+    protected function sendRequest($method, $data)
+    {
+        $response = $this->client->send(
+            $this->buildRequest($method, $data)
+        );
+
+        if (!$response->faultCode()) {
+            return $response->value();
+        }
+        throw new RuntimeException(
+            sprintf(
+                'Unsuccessful request: `%s` resulted in a `%s %s` response',
+                $method,
+                $response->faultCode(),
+                $response->faultString()
+            )
+        );
+    }
 }
