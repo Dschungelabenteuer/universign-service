@@ -6,18 +6,18 @@ use PhpXmlRpc\Value;
 
 class CertificateInfo extends Base
 {
-  protected $attributesDefinitions = array(
-    /**
-     * The certificate subject DN
-     */
-    'subject' => true,
-    /**
-     * The certificate issuer DN
-     */
-    'issuer' => true,
-    /**
-     * The certificate serial number
-     */
-    'serial' => true,
-  );
+    protected $attributesDefinitions = [
+        /**
+         * The certificate subject DN
+         */
+        'subject' => true,
+        /**
+         * The certificate issuer DN
+         */
+        'issuer' => true,
+        /**
+         * The certificate serial number
+         */
+        'serial' => true,
+    ];
 }
