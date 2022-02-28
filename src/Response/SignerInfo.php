@@ -41,6 +41,7 @@ class SignerInfo extends Base
         'actionDate' => true,
 
         'refusedDocs' => true,
+        'refusalComment' => true,
     ];
 
     protected function parseCertificateInfo(Value $value)
